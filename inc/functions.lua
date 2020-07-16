@@ -435,7 +435,7 @@ print("Update Source And Reload ~ ./inc/Run.lua")
 
 end
 ----------------------{ Get Name Bot }-----------------------------
-Bot_Name = redis:get(basmah..":NameBot:") or "الزعيم"
+Bot_Name = redis:get(basmah..":NameBot:") or "بصمة"
 
 
 function GetType(ChatID) 
@@ -498,10 +498,10 @@ Name = data.first_name_ .." "..data.last_name_
  else 
 Name = data.first_name_ 
 end
-usernn = data.username_ or "th3bs"
+usernn = data.username_ or "i3mrz"
 else 
 Name = data.title_
-usernn = data.type_.user_.username_ or "th3bs"
+usernn = data.type_.user_.username_ or "i3mrz"
 end
 Name = Name:gsub('[[][]]','')
 Name = FlterName(Name,10)
@@ -984,7 +984,7 @@ for k,v in pairs(mmez) do
   if info and info.username and info.username:match("@[%a%d_]+") then
   message = message ..i.."-l ["..info.username..'] \n'
   else
-  message = message ..i.. '-l ['..info.username..'](t.me/TH3bs) \n'
+  message = message ..i.. '-l ['..info.username..'](t.me/i3mrz) \n'
   end
   
   i=i+1
@@ -996,7 +996,7 @@ for k,v in pairs(Admins) do
     if info and info.username and info.username:match("@[%a%d_]+") then
       message = message ..i.."-l ["..info.username..'] \n'
       else
-      message = message ..i.. '-l ['..info.username..'](t.me/TH3bs) \n'
+      message = message ..i.. '-l ['..info.username..'](t.me/i3mrz) \n'
       end
       i=i+1
     end 
@@ -1007,7 +1007,7 @@ for k,v in pairs(Owners) do
     if info and info.username and info.username:match("@[%a%d_]+") then
       message = message ..i.."-l ["..info.username..'] \n'
       else
-      message = message ..i.. '-l ['..info.username..'](t.me/TH3bs) \n'
+      message = message ..i.. '-l ['..info.username..'](t.me/i3mrz) \n'
       end
       i=i+1
     end 
@@ -1018,7 +1018,7 @@ for k,v in pairs(monsha) do
     if info and info.username and info.username:match("@[%a%d_]+") then
       message = message ..i.."-l ["..info.username..'] \n'
       else
-      message = message ..i.. '-l ['..info.username..'](t.me/TH3bs) \n'
+      message = message ..i.. '-l ['..info.username..'](t.me/i3mrz) \n'
       end
       i=i+1
     end 
@@ -1030,7 +1030,7 @@ for k,v in pairs(monshaas) do
   if info and info.username and info.username:match("@[%a%d_]+") then
     message = message ..i.."-l ["..info.username..'] \n'
     else
-    message = message ..i.. '-l ['..info.username..'](t.me/TH3bs) \n'
+    message = message ..i.. '-l ['..info.username..'](t.me/i3mrz) \n'
     end
     i=i+1
   end 
@@ -1049,7 +1049,7 @@ local count = redis:scard(basmah..'mtwr_count'..v)
 if info and info.username and info.username:match("@[%a%d_]+") then
 message = message ..k.."-l ["..info.username..'] » (`' ..v.. '`){'..count..'} \n'
 else
-message = message ..k.. '-l ['..info.username..'](t.me/TH3bs) l » (`' ..v.. '`){'..count..'} \n'
+message = message ..k.. '-l ['..info.username..'](t.me/i3mrz) l » (`' ..v.. '`){'..count..'} \n'
 end
 end 
 end
@@ -1075,7 +1075,7 @@ function conslist(msg)
     if info and info.username and info.username:match("@[%a%d_]+") then
     message = message ..k.."-l ["..info.username..'] » (`' ..v.. '`) \n'
     else
-      message = message ..k.. '-l ['..info.username..'](t.me/TH3bs) l » (`' ..v.. '`) \n'
+      message = message ..k.. '-l ['..info.username..'](t.me/i3mrz) l » (`' ..v.. '`) \n'
     end
     end
     end
@@ -1090,7 +1090,7 @@ function conslist(msg)
     if info and info.username and info.username:match("@[%a%d_]+") then
     message = message ..k.."-l ["..info.username..'] » (`' ..v.. '`) \n'
     else
-      message = message ..k.. '-l ['..info.username..'](t.me/TH3bs) l » (`' ..v.. '`) \n'
+      message = message ..k.. '-l ['..info.username..'](t.me/i3mrz) l » (`' ..v.. '`) \n'
     end
     end
     end
@@ -1109,7 +1109,7 @@ local info = redis:hgetall(basmah..'username:'..v)
 if info and info.username and info.username:match("@[%a%d_]+") then
 message = message ..k.. '-l ['..(info.username or '')..'] » (`' ..v.. '`) \n'
 else
-  message = message ..k.. '-l ['..info.username..'](t.me/TH3bs) l » (`' ..v.. '`) \n'
+  message = message ..k.. '-l ['..info.username..'](t.me/i3mrz) l » (`' ..v.. '`) \n'
 end
 end
 end
@@ -1131,7 +1131,7 @@ local info = redis:hgetall(basmah..'username:'..v)
 if info and info.username and info.username:match("@[%a%d_]+") then
 message = message ..k.. '-l ['..info.username..'] » (`' ..v.. '`) \n'
 else
-message = message ..k.. '-l ['..info.username..'](t.me/TH3bs) l » (`' ..v.. '`) \n'
+message = message ..k.. '-l ['..info.username..'](t.me/i3mrz) l » (`' ..v.. '`) \n'
 end
 end
 if utf8.len(message) > 4096 then
@@ -1152,7 +1152,7 @@ local info = redis:hgetall(basmah..'username:'..v)
 if info and info.username and info.username:match("@[%a%d_]+") then
 message = message ..k.. '-l ['..info.username..'] » (`' ..v.. '`) \n'
 else
- message = message ..k.. '-l ['..info.username..'](t.me/TH3bs) l » (`' ..v.. '`) \n'
+ message = message ..k.. '-l ['..info.username..'](t.me/i3mrz) l » (`' ..v.. '`) \n'
 end
 end
 if utf8.len(message) > 4096 then
@@ -1182,7 +1182,7 @@ local info = redis:hgetall(basmah..'username:'..v)
 if info and info.username and info.username:match("@[%a%d_]+") then
 message = message ..k.. '-l ['..info.username..'] » (`' ..v.. '`) \n'
 else
-message = message ..k.. '-l ['..info.username..'](t.me/TH3bs) l » (`' ..v.. '`) \n'
+message = message ..k.. '-l ['..info.username..'](t.me/i3mrz) l » (`' ..v.. '`) \n'
 end
 end
 if utf8.len(message) > 4096 then
@@ -1213,7 +1213,7 @@ local info = redis:hgetall(basmah..'username:'..v)
 if info and info.username and info.username:match("@[%a%d_]+") then
 message = message ..k.. '-l ['..info.username..'] » (`' ..v.. '`) \n'
 else
-message = message ..k.. '-l ['..info.username..'](t.me/TH3bs) l » (`' ..v.. '`) \n'
+message = message ..k.. '-l ['..info.username..'](t.me/i3mrz) l » (`' ..v.. '`) \n'
 end 
 end 
 if utf8.len(message) > 4096 then
@@ -1243,7 +1243,7 @@ local info = redis:hgetall(basmah..'username:'..v)
 if info and info.username and info.username:match("@[%a%d_]+") then
 message = message ..k.. '-l ['..info.username..'] » (`' ..v.. '`) \n'
 else
-message = message ..k.. '-l ['..info.username..'](t.me/TH3bs) l » (`' ..v.. '`) \n'
+message = message ..k.. '-l ['..info.username..'](t.me/i3mrz) l » (`' ..v.. '`) \n'
 end
 end 
 if utf8.len(message) > 4096 then
@@ -1520,11 +1520,11 @@ end
 
 function modadd(msg)
 if redis:get(basmah..'lock_service') then
-lock_service = true
+lock_servicez = true
 else
-lock_service = false
+lock_servicez = false
 end
-if not msg.SudoUser and not lock_service then return '🚸¦ أنـت لـسـت الـمـطـور ⚙️' end
+if not msg.SudoUser and not lock_servicez then return '🚸¦ أنـت لـسـت الـمـطـور ⚙️' end
 if msg.is_post_ then return "🚸¦ عذرا هذا بوت حمايه للمجموعات وليس للقنوات  " end
 if msg.type ~= "channel" then return '🚸¦ البوت يعمل فقط في المجموعات العامه لذا يجب ترقية المجموعه ووضع معرف للمجموعه لتصبح عامه ⚙️' end
 if redis:get(basmah..'group:add'..msg.chat_id_) then  return '🎗*¦* المجموعه بالتأكيد ✓️ تم تفعيلها' end
@@ -1555,7 +1555,7 @@ if data.channel_ and data.channel_.status_.ID  == "ChatMemberStatusMember" then
 return sendMsg(arg.chat_id_,arg.id_,'📛*¦* عذرا البوت ليس ادمن  في المجموعه ♨️\n🔙*¦* يرجى ترقيته ادمن لتتمكن من تفعيل البوت ✓️')
 end
 
-if arg.lock_service then 
+if arg.lock_servicez then 
 sendMsg(arg.chat_id_,arg.id_,'📮*¦ تـم تـفـعـيـل الـمـجـمـوعـه ✓️ \n👨🏽‍🔧¦¦* وتم رفع جمـيع آلآدمـنيهہ‏‏‏ آلگروب بآلبوت \n✓')
 else
 sendMsg(arg.chat_id_,arg.id_,'📮¦ تـم تـفـعـيـل آلمـجمـوعهہ‏‏ \n✓️')
@@ -1569,7 +1569,7 @@ GetUserID(v.user_id_,function(arg,data)
 redis:hset(basmah..'username:'..data.id_,'username', ResolveUserName(data))
 redis:sadd(basmah..':MONSHA_Group:'..arg.chat_id_,data.id_)
 end,{chat_id_=arg.chat_id_})
-elseif arg.lock_service and not data.members_[k].bot_info_ and data.members_[k].status_.ID == "ChatMemberStatusEditor" then
+elseif arg.lock_servicez and not data.members_[k].bot_info_ and data.members_[k].status_.ID == "ChatMemberStatusEditor" then
 if not redis:sismember(basmah..'admins:'..arg.chat_id_,v.user_id_) then
 GetUserID(v.user_id_,function(arg,data)
 redis:hset(basmah..'username:'..data.id_,'username',ResolveUserName(data))
@@ -1578,7 +1578,7 @@ end,{chat_id_=arg.chat_id_})
 end
 end
 end
-end,25,{chat_id_=arg.chat_id_,sender_user_id_=arg.sender_user_id_,lock_service=arg.lock_service})
+end,25,{chat_id_=arg.chat_id_,sender_user_id_=arg.sender_user_id_,lock_servicez=arg.lock_servicez})
 
 
 
@@ -1643,7 +1643,7 @@ end,{chat_id_=arg.chat_id_,sender_user_id_=arg.sender_user_id_,NameGroup=NameGro
 end,{chat_id_=arg.chat_id_,sender_user_id_=arg.sender_user_id_,Groupcount=Groupcount,invite_link_=data.invite_link_})
 
 
-end,{chat_id_=msg.chat_id_,id_=msg.id_,sender_user_id_=msg.sender_user_id_,lock_service=lock_service})
+end,{chat_id_=msg.chat_id_,id_=msg.id_,sender_user_id_=msg.sender_user_id_,lock_servicez=lock_servicez})
 return false
 end
 
@@ -1975,7 +1975,7 @@ end
 --========================================================================
 if cmd == "DwnAll" then ----------- تنزيل الكل
   print(UserID..":"..SUDO_ID)
-if UserID == our_id then return sendMsg(ChatID,MsgID,"📛*¦* لآ يمكنك تنفيذ الامر مع البوت\n❕") end
+  if UserID == our_id then return sendMsg(ChatID,MsgID,"📛*¦* لآ يمكنك تنفيذ الامر مع البوت\n❕") end
 
   if UserID == SUDO_ID then 
   rinkuser = 1

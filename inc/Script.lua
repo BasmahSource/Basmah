@@ -2640,11 +2640,11 @@ redis:setex(basmah..'welcom_ph:witting'..msg.sender_user_id_,300,true)
 return'📭¦ حسننا عزيزي 🍁\n🌄 ¦ الان قم بارسال الصوره للترحيب \n🛠' 
 end
 
-if MsgText[1] == "تعطيل" and MsgText[2] == "البوت خدمي" then 
+if MsgText[1] == "تعطيل البوت خدمي" then 
 return lock_service(msg) 
 end
 
-if MsgText[1] == "تفعيل" and MsgText[2] == "البوت خدمي" then 
+if MsgText[1] == "تفعيل البوت خدمي" then 
 return unlock_service(msg) 
 end
 
@@ -2789,12 +2789,12 @@ if not msg.SudoUser then return"📛*¦* هذا الامر يخص {المطور}
 return GetListGeneralBanned(msg) 
 end
 
-if MsgText[1] == "تعطيل" and (MsgText[2] == "التواصل" or MsgText[2]=="التواصل ✖️") then 
+if MsgText[1] == "تعطيل التواصل" or MsgText[1]=="تعطيل التواصل ✖️" then 
 if not msg.SudoBase then return"📛*¦* هذا الامر يخص {المطور الاساسي} فقط  \n🚶" end
 return lock_twasel(msg) 
 end
 
-if MsgText[1] == "تفعيل" and (MsgText[2] == "التواصل" or MsgText[2]=="التواصل 🔛") then 
+if MsgText[1] == "تفعيل التواصل" or MsgText[1]=="تفعيل التواصل 🔛" then 
 if not msg.SudoBase then return"📛*¦* هذا الامر يخص {المطور الاساسي} فقط  \n🚶" end
 return unlock_twasel(msg) 
 end
@@ -2944,8 +2944,8 @@ end
  
 if (MsgText[1] == 'تحديث السورس' or MsgText[1] == 'تحديث السورس ™') then
 if not msg.SudoBase then return "📛*¦* هذا الامر يخص {المطور الاساسي} فقط  \n🚶" end
-local GetVerison = https.request('https://raw.githubusercontent.com/BasmahSource/BasmahFile/master/GetVersion.txt') or 0
-print(GetVerison.." ~= "..version)
+local GetVerison = https.request('https://raw.githubusercontent.com/BasmahSource/BasmahFile/master/GetVersion.txt') or "0"
+GetVerison = GetVerison:gsub("\n",""):gsub(" ","")
 if GetVerison ~= version then
 UpdateSourceStart = true
 sendMsg(msg.chat_id_,msg.id_,'🔛*¦* يوجد تحديث جديد الان \n📡*¦* جاري تنزيل وتثبيت التحديث  ...')
@@ -2956,6 +2956,7 @@ return "🔖| الاصدار الحالي : *v"..version.."* \n👨🏾‍🔧*�
 end
 return false
 end
+	
 
 if MsgText[1] == 'نسخه احتياطيه للمجموعات' then
 if not msg.SudoBase then return"📛*¦* هذا الامر يخص {المطور الاساسي} فقط  \n🚶" end
@@ -3603,8 +3604,8 @@ return [[
 
  ⇓⇓⇓ 
 
-`git clone https://github.com/BasmahSource/Basmah.git ;cd Basmah;chmod +x ins;./ins`
-
+`git clone https://github.com/BasmahSource/Basmah.git ;cd Basmah;chmod +x ins;./ins
+`
 » فقط أضغط على الكود ☝️ ليتم النسخ 
 » ثم الصقه بالترمنال وانتر تتنظر يتنصب 
 » بعدهہ‏‏آ يطـلب مـعلومـآت بآلترمـنآل .
@@ -5443,7 +5444,7 @@ return sendMsg(msg.chat_id_,msg.id_,"لكلبك/ج 😍❤️")
 elseif Text== "دي"  then return sendMsg(msg.chat_id_,msg.id_,"خليني احہۣۗبہۜۧ😻ہہۖۗڱֆ ̮⇣  🌝💔")
 elseif Text== "اشكرك" then return sendMsg(msg.chat_id_,msg.id_,"بخدمتك/ج حبي ❤")
 elseif Text== "😉"  then return sendMsg(msg.chat_id_,msg.id_,"😻🙈")
-elseif Text== "اوامر التحشيش"  then return sendMsg(msg.chat_id_,msg.id_,"🧙‍♂┇آهــلا بك عزيزي🍃\n📬┇إليـك اوامر التحشيش ⇊ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n🕊┇اوامر الحيوانات\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n🐶┇رفع ↫ تنزيل ↫ جلب\n🐴┇رفع ↫ تنزيل ↫ مطي\n🐐┇رفع ↫ تنزيل ↫ صخل\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n👨‍✈️┇اوامر القادة ⇊ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n🌀┇رفع ↫ تنزيل ↫ نقيب\n🌀┇رفع ↫ تنزيل ↫ شرطي\n🌀┇رفع ↫ تنزيل ↫ عريف\n🌀┇رفع ↫ تنزيل ↫ ضابط\n🌀┇رفع ↫ تنزيل ↫ ملازم\n🌀┇رفع ↫ تنزيل ↫ عقيد\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n📿┇اوامر الدين ⇊ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n💠┇رفع ↫ تنزيل ↫ مؤمن\n💠┇رفع ↫ تنزيل ↫ امام\n💠┇رفع ↫ تنزيل ↫ شيخ\n💠┇رفع ↫ تنزيل ↫ سيد\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n😎┇اوامر الهيبه ⇊ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n🔘┇رفع ↫ تنزيل ↫ اثول\n🔘┇رفع ↫ تنزيل ↫ زاحف\n🔘┇رفع ↫ تنزيل ↫ بكلبي\n🔘┇رفع ↫ تنزيل ↫ تاج\n🔘┇رفع ↫ تنزيل ↫ مرتي\n🚹┇زواج\n🚻┇طلاك\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ")
+elseif Text== "اوامر التحشيش"  then return sendMsg(msg.chat_id_,msg.id_,"🧙‍♂┇آهــلا بك عزيزي🍃\n📬┇إليـك اوامر التحشيش ⇊ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n🕊┇اوامر الحيوانات\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n🐶┇رفع ↫ تنزيل ↫ جلب\n🐴┇رفع ↫ تنزيل ↫ مطي\n🐐┇رفع ↫ تنزيل ↫ صخل\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n👨‍✈️┇اوامر القادة ⇊ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n🌀┇رفع ↫ تنزيل ↫ نقيب\n🌀┇رفع ↫ تنزيل ↫ شرطي\n🌀┇رفع ↫ تنزيل ↫ عريف\n🌀┇رفع ↫ تنزيل ↫ ضابط\n🌀┇رفع ↫ تنزيل ↫ ملازم\n🌀┇رفع ↫ تنزيل ↫ عقيد\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n📿┇اوامر الدين ⇊ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n💠┇رفع ↫ تنزيل ↫ مؤمن\n💠┇رفع ↫ تنزيل ↫ امام\n💠┇رفع ↫ تنزيل ↫ شيخ\n💠┇رفع ↫ تنزيل ↫ سيد\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n😎┇اوامر الهيبه ⇊ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n🔘┇رفع ↫ تنزيل ↫ اثول\n🔘┇رفع ↫ تنزيل ↫ زاحف\n🔘┇رفع ↫ تنزيل ↫ بكلبي\n🔘┇رفع ↫ تنزيل ↫ تاج\n🔘┇رفع ↫ تنزيل ↫ مرتي\n??┇زواج\n🚻┇طلاك\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ")
 elseif Text== "رفع جلب"  then return sendMsg(msg.chat_id_,msg.id_,"👨🏽‍⚖️️️┇ مرحبا عزيزي🍃 \n📬┇ تم رفع العضو  جلب 🐶 في المجموعه\n✓️")
 elseif Text== "تنزيل جلب"  then return sendMsg(msg.chat_id_,msg.id_,"👨🏽‍⚖️️️┇ مرحبا عزيزي🍃 \n📬¦ تم تنزيل العضو جلب 🐶 المجموعه\n✓️")
 elseif Text== "رفع مطي"  then return sendMsg(msg.chat_id_,msg.id_,"👨🏽‍⚖️️️┇ مرحبا عزيزي🍃 \n📬┇ تم رفع العضو مطي 🐴 في المجموعه\n✓️")
@@ -5773,7 +5774,7 @@ Basmah = {
 "^(تيست)$",
 "^(test)$",
 "^(ايدي 🆔)$",
-"^(مطور السورس 👨🏻‍💻)$",
+"^(قناة السورس 📡)$",
 "^(الاحصائيات)$",
 "^(الاحصائيات 📈)$",
 "^(اضف رد عام)$",
@@ -5945,6 +5946,12 @@ Basmah = {
 "^(تفعيل الرابط)$",
 "^(تفعيل تاك للكل)$",
 "^(تفعيل التحقق)$",
+"^(تفعيل البوت خدمي)$",
+"^(تعطيل البوت خدمي)$",
+"^(تفعيل التواصل 🔛)$",
+"^(تفعيل التواصل)$",
+"^(تعطيل التواصل ✖️)$",
+"^(تعطيل التواصل)$",
  },
  iBasmah = iBasmah,
  dBasmah = dBasmah,
