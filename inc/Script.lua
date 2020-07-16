@@ -3032,7 +3032,7 @@ end
 if MsgText[1] == "تعيين كليشه الستارت" or MsgText[1] == "تعيين كليشة الستارت" then
 if not msg.SudoBase then return"📛*¦* هذا الامر يخص {المطور الاساسي} فقط  \n🚶" end
 redis:setex(basmah..':KStart:'..msg.chat_id_..msg.sender_user_id_,900,true)
-return "📭¦ حسننا الان ارسل كليشة الستارت \n\n علما ان الاختصارات كالاتي : \n \n{الاسم} : لوضع اسم المستخدم\n{الايدي} : لوضع ايدي المستخدم\n{المعرف} : لوضع معرف المستخدم \n{الرتبه} : لوضع نوع رتبه المستخدم \n ."
+return "📭¦ حسننا الان ارسل كليشة الستارت \n\n علما ان الاختصارات كالاتي : \n\n{اسم البوت} : لوضع اسم البوت\n{المطور} : لوضع معرف المطور\n{الاسم} : لوضع اسم المستخدم\n{الايدي} : لوضع ايدي المستخدم\n{المعرف} : لوضع معرف المستخدم\n{الرتبه} : لوضع نوع رتبه المستخدم \n ."
 end
 if MsgText[1] == "مسح كليشه الستارت" or MsgText[1] == "مسح كليشة الستارت"  then
 if not msg.SudoBase then return"📛*¦* هذا الامر يخص {المطور الاساسي} فقط  \n🚶" end
@@ -3794,13 +3794,15 @@ local edited = (redis:get(basmah..':edited:'..msg.chat_id_..':'..msg.sender_user
 local points = redis:get(basmah..':User_Points:'..msg.chat_id_..msg.sender_user_id_) or 0
 local Emsgs = redis:get(basmah..'msgs:'..msg.sender_user_id_..':'..msg.chat_id_) or 1
 if data.username_ then UserNameID = "@"..data.username_ else UserNameID = "لا يوجد" end  
+text = text:gsub("{المطور}",SUDO_USER)
+text = text:gsub("{اسم البوت}",redis:get(basmah..':NameBot:'))
 text = text:gsub("{الاسم}",Name)
 text = text:gsub("{الايدي}",msg.sender_user_id_)
 text = text:gsub("{المعرف}",UserNameID)
 text = text:gsub("{الرتبه}",msg.TheRank)
 xsudouser = SUDO_USER:gsub('@','')
 xsudouser = xsudouser:gsub([[\_]],'_')
-local inline = {{{text="آلمـطـور ™",url="t.me/"..xsudouser}}}
+local inline = {{{text="آلمـطـور 🌪!",url="t.me/"..xsudouser}}}
 send_key(msg.sender_user_id_,Flter_Markdown(text),nil,inline,msg.id_)
 end,nil)
 return false
