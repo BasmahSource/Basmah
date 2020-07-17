@@ -3049,10 +3049,11 @@ local voice 	= redis:exists(basmah..'replay_voice:group:'..msg.chat_id_)
 local imation   = redis:exists(basmah..'replay_animation:group:'..msg.chat_id_)
 local audio	 	= redis:exists(basmah..'replay_audio:group:'..msg.chat_id_)
 local sticker 	= redis:exists(basmah..'replay_sticker:group:'..msg.chat_id_)
+local document 	= redis:exists(basmah..'replay_document:group:'..msg.chat_id_)
 local video 	= redis:exists(basmah..'replay_video:group:'..msg.chat_id_)
-if names or photo or voice or imation or audio or sticker or video then
+if names or photo or voice or imation or audio or sticker or document or video then
 redis:del(basmah..'replay:'..msg.chat_id_,basmah..'replay_photo:group:'..msg.chat_id_,basmah..'replay_voice:group:'..msg.chat_id_,
-basmah..'replay_animation:group:'..msg.chat_id_,basmah..'replay_audio:group:'..msg.chat_id_,basmah..'replay_sticker:group:'..msg.chat_id_,basmah..'replay_video:group:'..msg.chat_id_)
+basmah..'replay_animation:group:'..msg.chat_id_,basmah..'replay_audio:group:'..msg.chat_id_,basmah..'replay_sticker:group:'..msg.chat_id_,basmah..'replay_document:group:'..msg.chat_id_,basmah..'replay_video:group:'..msg.chat_id_)
 return "✓ تم مسح كل الردود 🚀"
 else
 return '🚸*¦* لا يوجد ردود ليتم مسحها \n❕'
@@ -3067,9 +3068,10 @@ local voice 	= redis:exists(basmah..'replay_voice:group:')
 local imation 	= redis:exists(basmah..'replay_animation:group:')
 local audio 	= redis:exists(basmah..'replay_audio:group:')
 local sticker 	= redis:exists(basmah..'replay_sticker:group:')
+local document 	= redis:exists(basmah..'replay_document:group:')
 local video 	= redis:exists(basmah..'replay_video:group:')
-if names or photo or voice or imation or audio or sticker or video then
-redis:del(basmah..'replay:all',basmah..'replay_photo:group:',basmah..'replay_voice:group:',basmah..'replay_animation:group:',basmah..'replay_audio:group:',basmah..'replay_sticker:group:',basmah..'replay_video:group:')
+if names or photo or voice or imation or audio or sticker or document or video then
+redis:del(basmah..'replay:all',basmah..'replay_photo:group:',basmah..'replay_voice:group:',basmah..'replay_animation:group:',basmah..'replay_audio:group:',basmah..'replay_sticker:group:',basmah..'replay_document:group:',basmah..'replay_video:group:')
 return "✓ تم مسح كل الردود العامه🚀"
 else
 return "لا يوجد ردود عامه ليتم مسحها ! 🚀"
@@ -3097,8 +3099,9 @@ local voice  	= redis:hkeys(basmah..'replay_voice:group:'..msg.chat_id_)
 local imation 	= redis:hkeys(basmah..'replay_animation:group:'..msg.chat_id_)
 local audio 	= redis:hkeys(basmah..'replay_audio:group:'..msg.chat_id_)
 local sticker 	= redis:hkeys(basmah..'replay_sticker:group:'..msg.chat_id_)
+local document 	= redis:hkeys(basmah..'replay_document:group:'..msg.chat_id_)
 local video 	= redis:hkeys(basmah..'replay_video:group:'..msg.chat_id_)
-if #names==0 and #photo==0 and #voice==0 and #imation==0 and #audio==0 and #sticker==0 and #video==0 then 
+if #names==0 and #photo==0 and #voice==0 and #imation==0 and #audio==0 and #sticker==0 and #document==0 and #video==0 then 
 return '🚸*¦* لا يوجد ردود مضافه حاليا \n❕' 
 end
 local ii = 1
@@ -3109,6 +3112,7 @@ for i=1, #voice 	do message = message ..ii..' - *{* '..  voice[i]..' *}_*( بص�
 for i=1, #imation 	do message = message ..ii..' - *{* '..imation[i]..' *}_*( متحركه 🎭 ) \n' ii = ii + 1 end
 for i=1, #audio 	do message = message ..ii..' - *{* '..	audio[i]..' *}_*( صوتيه 🔊 ) \n'  ii = ii + 1 end
 for i=1, #sticker 	do message = message ..ii..' - *{* '..sticker[i]..' *}_*( ملصق 🗺 ) \n' 	 ii = ii + 1 end
+for i=1, #document 	do message = message ..ii..' - *{* '..	document[i]..' *}_*( ملف 📂 ) \n'  ii = ii + 1 end
 for i=1, #video 	do message = message ..ii..' - *{* '..	video[i]..' *}_*( فيديو  🎞 ) \n' ii = ii + 1 end
 message = message..'\n➖➖➖'
 if utf8.len(message) > 4096 then
@@ -3126,8 +3130,9 @@ local voice 	= redis:hkeys(basmah..'replay_voice:group:')
 local imation 	= redis:hkeys(basmah..'replay_animation:group:')
 local audio 	= redis:hkeys(basmah..'replay_audio:group:')
 local sticker 	= redis:hkeys(basmah..'replay_sticker:group:')
+local document 	= redis:hkeys(basmah..'replay_document:group:')
 local video 	= redis:hkeys(basmah..'replay_video:group:')
-if #names==0 and #photo==0 and #voice==0 and #imation==0 and #audio==0 and #sticker==0 and #video==0 then 
+if #names==0 and #photo==0 and #voice==0 and #imation==0 and #audio==0 and #sticker==0 and #document==0 and #video==0 then 
 return '🚸*¦* لا يوجد ردود مضافه حاليا \n❕' 
 end
 local ii = 1
@@ -3138,6 +3143,7 @@ for i=1, #voice 	do message = message ..ii..' - *{* '..	voice[i]..' *}_*( بصم
 for i=1, #imation 	do message = message ..ii..' - *{* '..imation[i]..' *}_*( متحركه 🎭 ) \n'ii = ii + 1 end
 for i=1, #audio 	do message = message ..ii..' - *{* '..	audio[i]..' *}_*( صوتيه 🔊 ) \n' ii = ii + 1 end
 for i=1, #sticker 	do message = message ..ii..' - *{* '..sticker[i]..' *}_*( ملصق 🗺 ) \n' 	ii = ii + 1 end
+for i=1, #document 	do message = message ..ii..' - *{* '..	document[i]..' *}_*( ملف 📂 ) \n'  ii = ii + 1 end
 for i=1, #video 	do message = message ..ii..' - *{* '..	video[i]..' *}_*( فيديو  🎞 ) \n'ii = ii + 1 end
 message = message..'\n➖➖➖'
 if utf8.len(message) > 4096 then
@@ -3901,6 +3907,10 @@ elseif msg.content_.ID == "MessageVideo" then
 redis:hset(basmah..'replay_video:group:'..msg.chat_id_,klma,msg.content_.video_.video_.persistent_id_)
 redis:del(basmah..'addrd:'..msg.chat_id_..msg.sender_user_id_)
 return sendMsg(msg.chat_id_,msg.id_,'🗂¦ تم اضافه فيديو للرد بنجاح ✓\n🗂¦ يمكنك ارسال (['..klma..']) لاضهار الفيديو الاتي .')
+elseif msg.content_.ID == "MessageDocument" then
+redis:hset(basmah..'replay_document:group:'..msg.chat_id_,klma,msg.content_.document_.document_.persistent_id_)
+redis:del(basmah..'addrd:'..msg.chat_id_..msg.sender_user_id_)
+return sendMsg(msg.chat_id_,msg.id_,'🗂¦ تم اضافه الملف للرد بنجاح ✓\n🗂¦ يمكنك ارسال (['..klma..']) لاضهار الملف الاتي .')
 elseif msg.content_.ID == "MessageAudio" then
 redis:hset(basmah..'replay_audio:group:'..msg.chat_id_,klma,msg.content_.audio_.audio_.persistent_id_)
 redis:del(basmah..'addrd:'..msg.chat_id_..msg.sender_user_id_)
@@ -3941,6 +3951,10 @@ elseif msg.content_.ID == "MessageAnimation" then
 redis:hset(basmah..'replay_animation:group:',klma,msg.content_.animation_.animation_.persistent_id_)
 redis:del(basmah..'addrd_all:'..msg.chat_id_..msg.sender_user_id_)
 return sendMsg(msg.chat_id_,msg.id_,'🗂¦ تم اضافه متحركه للرد العام ✓\n🗂¦ يمكنك ارسال (['..klma..']) لاضهار الصوره الاتيه .')
+elseif msg.content_.ID == "MessageDocument" then
+redis:hset(basmah..'replay_document:group:',klma,msg.content_.document_.document_.persistent_id_)
+redis:del(basmah..'addrd_all:'..msg.chat_id_..msg.sender_user_id_)
+return sendMsg(msg.chat_id_,msg.id_,'🗂¦ تم اضافه الملف للرد العام ✓\n🗂¦ يمكنك ارسال (['..klma..']) لاضهار الملف الاتي .')
 elseif msg.content_.ID == "MessageVideo" then
 redis:hset(basmah..'replay_video:group:',klma,msg.content_.video_.video_.persistent_id_)
 redis:del(basmah..'addrd_all:'..msg.chat_id_..msg.sender_user_id_)
@@ -4278,9 +4292,10 @@ redis:hdel(basmah..'replay_voice:group:',msg.text)
 redis:hdel(basmah..'replay_animation:group:',msg.text)
 redis:hdel(basmah..'replay_audio:group:',msg.text)
 redis:hdel(basmah..'replay_sticker:group:',msg.text)
+redis:hdel(basmah..'replay_document:group:',msg.text)
 redis:hdel(basmah..'replay_video:group:',msg.text)
 redis:setex(basmah..'allreplay:'..msg.chat_id_..msg.sender_user_id_,300,msg.text)
-return sendMsg(msg.chat_id_,msg.id_,"📜¦ جيد , يمكنك الان ارسال جوا ب الردالعام \n🔛¦ [[ نص,صوره,فيديو,متحركه,بصمه,اغنيه ]] ✓\n\n\n علما ان الاختصارات كالاتي : \n \n{الاسم} : لوضع اسم المستخدم\n{الايدي} : لوضع ايدي المستخدم\n{المعرف} : لوضع معرف المستخدم \n{الرتبه} : لوضع نوع رتبه المستخدم \n{التفاعل} : لوضع تفاعل المستخدم \n{الرسائل} : لاضهار عدد الرسائل \n{النقاط} : لاضهار عدد النقاط \n{التعديل} : لاضهار عدد السحكات \n➼")
+return sendMsg(msg.chat_id_,msg.id_,"📜¦ جيد , يمكنك الان ارسال جوا ب الردالعام \n🔛¦ [[ نص,صوره,فيديو,ملف,متحركه,بصمه,اغنيه ]] ✓\n\n\n علما ان الاختصارات كالاتي : \n \n{الاسم} : لوضع اسم المستخدم\n{الايدي} : لوضع ايدي المستخدم\n{المعرف} : لوضع معرف المستخدم \n{الرتبه} : لوضع نوع رتبه المستخدم \n{التفاعل} : لوضع تفاعل المستخدم \n{الرسائل} : لاضهار عدد الرسائل \n{النقاط} : لاضهار عدد النقاط \n{التعديل} : لاضهار عدد السحكات \n➼")
 end
 end
 
@@ -4299,8 +4314,9 @@ local voice = redis:hget(basmah..'replay_voice:group:',msg.text)
 local animation = redis:hget(basmah..'replay_animation:group:',msg.text)
 local audio = redis:hget(basmah..'replay_audio:group:',msg.text)
 local sticker = redis:hget(basmah..'replay_sticker:group:',msg.text)
+local document = redis:hget(basmah..'replay_document:group:',msg.text)
 local video = redis:hget(basmah..'replay_video:group:',msg.text)
-if not (names or photo or voice or animation or audio or sticker or video) then
+if not (names or photo or voice or animation or audio or sticker or document or video) then
 return sendMsg(msg.chat_id_,msg.id_,'💬*¦* هذا الرد ليس مضاف في قائمه الردود 📛')
 else
 redis:hdel(basmah..'replay:all',msg.text)
@@ -4309,6 +4325,7 @@ redis:hdel(basmah..'replay_voice:group:',msg.text)
 redis:hdel(basmah..'replay_audio:group:',msg.text)
 redis:hdel(basmah..'replay_animation:group:',msg.text)
 redis:hdel(basmah..'replay_sticker:group:',msg.text)
+redis:hdel(basmah..'replay_document:group:',msg.text)
 redis:hdel(basmah..'replay_video:group:',msg.text)
 return sendMsg(msg.chat_id_,msg.id_,'('..Flter_Markdown(msg.text)..')\n  ✓ تم مسح الرد 🚀 ')
 end 
@@ -4475,9 +4492,10 @@ redis:hdel(basmah..'replay_voice:group:'..msg.chat_id_,msg.text)
 redis:hdel(basmah..'replay_animation:group:'..msg.chat_id_,msg.text)
 redis:hdel(basmah..'replay_audio:group:'..msg.chat_id_,msg.text)
 redis:hdel(basmah..'replay_sticker:group:'..msg.chat_id_,msg.text)
+redis:hdel(basmah..'replay_document:group:'..msg.chat_id_,msg.text)
 redis:hdel(basmah..'replay_video:group:'..msg.chat_id_,msg.text)
 redis:setex(basmah..'replay1'..msg.chat_id_..msg.sender_user_id_,300,msg.text)
-return sendMsg(msg.chat_id_,msg.id_,"📜¦ جيد , يمكنك الان ارسال جواب الرد \n🔛¦ [[ نص,صوره,فيديو,متحركه,بصمه,اغنيه ]] \n\n علما ان الاختصارات كالاتي : \n \n{الاسم} : لوضع اسم المستخدم\n{الايدي} : لوضع ايدي المستخدم\n{المعرف} : لوضع معرف المستخدم \n{الرتبه} : لوضع نوع رتبه المستخدم \n{التفاعل} : لوضع تفاعل المستخدم \n{الرسائل} : لاضهار عدد الرسائل \n{النقاط} : لاضهار عدد النقاط \n{التعديل} : لاضهار عدد السحكات \n➼")
+return sendMsg(msg.chat_id_,msg.id_,"📜¦ جيد , يمكنك الان ارسال جواب الرد \n🔛¦ [[ نص,صوره,فيديو,ملف,متحركه,بصمه,اغنيه ]] \n\n علما ان الاختصارات كالاتي : \n \n{الاسم} : لوضع اسم المستخدم\n{الايدي} : لوضع ايدي المستخدم\n{المعرف} : لوضع معرف المستخدم \n{الرتبه} : لوضع نوع رتبه المستخدم \n{التفاعل} : لوضع تفاعل المستخدم \n{الرسائل} : لاضهار عدد الرسائل \n{النقاط} : لاضهار عدد النقاط \n{التعديل} : لاضهار عدد السحكات \n➼")
 end
 end
 
@@ -4489,8 +4507,9 @@ local voice 	= redis:hget(basmah..'replay_voice:group:'..msg.chat_id_,msg.text)
 local animation = redis:hget(basmah..'replay_animation:group:'..msg.chat_id_,msg.text)
 local audio 	= redis:hget(basmah..'replay_audio:group:'..msg.chat_id_,msg.text)
 local sticker 	= redis:hget(basmah..'replay_sticker:group:'..msg.chat_id_,msg.text)
+local document 	= redis:hget(basmah..'replay_document:group:'..msg.chat_id_,msg.text)
 local video 	= redis:hget(basmah..'replay_video:group:'..msg.chat_id_,msg.text)
-if not (names or photo or voice or animation or audio or sticker or video) then
+if not (names or photo or voice or animation or audio or sticker or document or video) then
 return sendMsg(msg.chat_id_,msg.id_,'💬*¦* هذا الرد ليس مضاف في قائمه الردود 📛')
 else
 redis:hdel(basmah..'replay:'..msg.chat_id_,msg.text)
@@ -4499,6 +4518,7 @@ redis:hdel(basmah..'replay_voice:group:'..msg.chat_id_,msg.text)
 redis:hdel(basmah..'replay_audio:group:'..msg.chat_id_,msg.text)
 redis:hdel(basmah..'replay_animation:group:'..msg.chat_id_,msg.text)
 redis:hdel(basmah..'replay_sticker:group:'..msg.chat_id_,msg.text)
+redis:hdel(basmah..'replay_document:group:'..msg.chat_id_,msg.text)
 redis:hdel(basmah..'replay_video:group:'..msg.chat_id_,msg.text)
 return sendMsg(msg.chat_id_,msg.id_,'(['..msg.text..'])\n  ✓ تم مسح الرد 🚀 ')
 end 
@@ -5190,6 +5210,14 @@ sendSticker(msg.chat_id_,msg.id_,Replay)
 return false
 end
 
+Replay = redis:hget(basmah..'replay_document:group:',msg.text)
+if Replay then 
+Caption = redis:hget(basmah..':caption_replay:'..msg.chat_id_,msg.text)
+Caption = convert_Klmat(msg,data,Caption)
+sendDocument(msg.chat_id_,msg.id_,Replay,Caption)
+return false
+end
+
 Replay = redis:hget(basmah..'replay_video:group:',msg.text)
 if Replay then 
 Caption = redis:hget(basmah..':caption_replay:'..msg.chat_id_,msg.text)
@@ -5233,6 +5261,14 @@ end
 Replay = redis:hget(basmah..'replay_sticker:group:'..msg.chat_id_,msg.text)
 if Replay then 
 sendSticker(msg.chat_id_,msg.id_,Replay)  
+return false
+end
+
+Replay = redis:hget(basmah..'replay_document:group:'..msg.chat_id_,msg.text)
+if Replay then 
+Caption = redis:hget(basmah..':caption_replay:'..msg.chat_id_,msg.text)
+Caption = convert_Klmat(msg,data,Caption)
+sendDocument(msg.chat_id_,msg.id_,Replay,Caption)
 return false
 end
 
