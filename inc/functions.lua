@@ -5,7 +5,6 @@
 #──▀████████▀──
 #─────▀██▀─────
 #l┊عُمر ‿ @i3mrz
-#l┊سعيد السوري ‿ @SA3ED
 #---------------------------------------------------------------------
 ]]
 
@@ -459,7 +458,7 @@ Text = Text..Num..'- * '..Files..' * \n'
 end
 end 
 if Num == 0 then
-Text = Text.."📛| Not files ~⪼ لا يوجد ملفات !"
+Text = Text.."⚠️| Not files ~⪼ لا يوجد ملفات !"
 end 
 return Text.."\n\n🗃| لتحميل المزيد من الملفات ادخلل لمتجر الملفات بالامر الاتي {` متجر الملفات `}"
 end
@@ -728,7 +727,7 @@ Name = utf8.sub(Name,0,CharNumber)..'...'
 end
 local CheckName = Name:gsub(' ','')
 if CheckName == "" then 
-Name = 'الاسم سبام 📛'
+Name = 'الاسم سبام ⚠️'
 end
 return utf8.escape(Name)
 end
@@ -922,8 +921,6 @@ function convert_Klmat(msg,data,Replay,MD)
   Replay = Replay:gsub("{الرسائل}",Emsgs)
   Replay = Replay:gsub("{التعديل}",edited)
   Replay = Replay:gsub("{النقاط}",points)
-  Replay = Replay:gsub("{البوت}",redis:get(basmah..':NameBot:'))
-  Replay = Replay:gsub("{المطور}",SUDO_USER)
   else
     Replay =""
   end
@@ -978,7 +975,7 @@ function TagAll(msg)
   local Owners = redis:smembers(basmah..'owners:'..msg.chat_id_)
   local Admins = redis:smembers(basmah..'admins:'..msg.chat_id_)
   local mmez = redis:smembers(basmah..'whitelist:'..msg.chat_id_)
-if #monshaas==0 and #monsha==0 and #Owners==0 and #Admins==0 and #mmez==0 then return "* لا يوجد قائمه حاليا \n📛 *" end
+if #monshaas==0 and #monsha==0 and #Owners==0 and #Admins==0 and #mmez==0 then return "* لا يوجد قائمه حاليا \n⚠️ *" end
 i = 1
 for k,v in pairs(mmez) do
   if not message:match(v) then
@@ -1043,7 +1040,7 @@ end
 function sudolist(msg)
 local list = redis:smembers(basmah..':SUDO_BOT:')
 message = '👨🏽‍💻*¦* قائمه الـمـطـوريـن : \n\n`★`*_* ['..SUDO_USER..'] ➣ (' ..SUDO_ID.. '){'..redis:scard(basmah..'mtwr_count'..SUDO_ID)..'}\n*----------------------------------*\n'
-if #list==0 then  message = message.."* لا يوجد مطورين حاليا \n📛 *"
+if #list==0 then  message = message.."* لا يوجد مطورين حاليا \n⚠️ *"
 else
 for k,v in pairs(list) do
 local info  = redis:hgetall(basmah..'username:'..v)
@@ -1056,7 +1053,7 @@ end
 end 
 end
 if utf8.len(message) > 4096 then
-return "📛| لا يمكن عرض المطورين بسبب القائمه كبيره جدا ."
+return "⚠️| لا يمكن عرض المطورين بسبب القائمه كبيره جدا ."
 else
 return send_msg(msg.chat_id_,message,msg.id_)
 end
@@ -1070,7 +1067,7 @@ function conslist(msg)
     message = '*⭐️¦ المنشئيين الاساسيين:*\n\n'
     local monsha = redis:smembers(basmah..':MONSHA_Group:'..msg.chat_id_)
     if #monsha == 0 then 
-    message = message .."📛| Not Super Creator ~⪼  لا يوجد منشئيين ااساسيين !\n"
+    message = message .."⚠️| Not Super Creator ~⪼  لا يوجد منشئيين ااساسيين !\n"
     else
     for k,v in pairs(monsha) do
     local info = redis:hgetall(basmah..'username:'..v)
@@ -1085,7 +1082,7 @@ function conslist(msg)
     message = message..'\n\n\n*🔅¦ المنشئيين :*\n\n'
     local monsha = redis:smembers(basmah..':MONSHA_BOT:'..msg.chat_id_)
     if #monsha == 0 then 
-    message = message .."📛| Not Creator ~⪼ لا يوجد منشئيين !\n"
+    message = message .."⚠️| Not Creator ~⪼ لا يوجد منشئيين !\n"
     else
     for k,v in pairs(monsha) do
     local info = redis:hgetall(basmah..'username:'..v)
@@ -1104,7 +1101,7 @@ function ownerlist(msg)
 message = '*📋¦ قائمه المدراء :*\n\n'
 local list = redis:smembers(basmah..'owners:'..msg.chat_id_)
 if #list == 0 then  
-message = message.."📛| Not Director ~⪼ لا يوجد مدراء !\n" 
+message = message.."⚠️| Not Director ~⪼ لا يوجد مدراء !\n" 
 else
 for k,v in pairs(list) do
 local info = redis:hgetall(basmah..'username:'..v)
@@ -1116,7 +1113,7 @@ end
 end
 end
 if utf8.len(message) > 4096 then
-return "📛| لا يمكن عرض المدراء بسبب القائمه كبيره جدا ."
+return "⚠️| لا يمكن عرض المدراء بسبب القائمه كبيره جدا ."
 else
 return send_msg(msg.chat_id_,message,msg.id_)
 end
@@ -1126,7 +1123,7 @@ end
 
 function GetListAdmin(msg)
 local list = redis:smembers(basmah..'admins:'..msg.chat_id_)
-if #list==0 then  return  "📛*¦* لا يوجد ادمن في هذه المجموعه \n❕" end
+if #list==0 then  return  "⚠️*¦* لا يوجد ادمن في هذه المجموعه \n❕" end
 message = '📋*¦ قائمه الادمنيه :*\n\n'
 for k,v in pairs(list) do
 local info = redis:hgetall(basmah..'username:'..v)
@@ -1137,7 +1134,7 @@ message = message ..k.. '-l ['..info.username..'](tg://user?id='..v..') l » (`'
 end
 end
 if utf8.len(message) > 4096 then
-return "📛| لا يمكن عرض الادمنيه بسبب القائمه كبيره جدا ."
+return "⚠️| لا يمكن عرض الادمنيه بسبب القائمه كبيره جدا ."
 else
 return send_msg(msg.chat_id_,message,msg.id_)
 end
@@ -1147,7 +1144,7 @@ end
 
 function whitelist(msg)
 local list = redis:smembers(basmah..'whitelist:'..msg.chat_id_)
-if #list == 0 then return "*📛¦ لا يوجد مميزين في القائمه *" end
+if #list == 0 then return "*⚠️¦ لا يوجد مميزين في القائمه *" end
 message = '📋*¦* قائمه الاعضاء المميزين :\n'   
 for k,v in pairs(list) do
 local info = redis:hgetall(basmah..'username:'..v)
@@ -1158,7 +1155,7 @@ else
 end
 end
 if utf8.len(message) > 4096 then
-return "📛| لا يمكن عرض المميزين بسبب القائمه كبيره جدا ."
+return "⚠️| لا يمكن عرض المميزين بسبب القائمه كبيره جدا ."
 else
 return send_msg(msg.chat_id_,message,msg.id_)
 end
@@ -1188,7 +1185,7 @@ message = message ..k.. '-l ['..info.username..'](tg://user?id='..v..') l » (`'
 end
 end
 if utf8.len(message) > 4096 then
-return "📛| لا يمكن عرض المكتومين بسبب القائمه كبيره جدا ."
+return "⚠️| لا يمكن عرض المكتومين بسبب القائمه كبيره جدا ."
 else
 return send_msg(msg.chat_id_,message,msg.id_)
 end
@@ -1219,7 +1216,7 @@ message = message ..k.. '-l ['..info.username..'](tg://user?id='..v..') l » (`'
 end 
 end 
 if utf8.len(message) > 4096 then
-return "📛| لا يمكن عرض المحظورين بسبب القائمه كبيره جدا ."
+return "⚠️| لا يمكن عرض المحظورين بسبب القائمه كبيره جدا ."
 else
 return send_msg(msg.chat_id_,message,msg.id_)
 end
@@ -1238,7 +1235,7 @@ end
 
 function GetListGeneralBanned(msg)
 local list = redis:smembers(basmah..'gban_users')
-if #list==0 then return  "*📛¦ لايوجد اعضاء محظورين عام*" end
+if #list==0 then return  "*⚠️¦ لايوجد اعضاء محظورين عام*" end
 message = '🛠*¦* قائمه المحظورين عام :\n'
 for k,v in pairs(list) do
 local info = redis:hgetall(basmah..'username:'..v)
@@ -1249,7 +1246,7 @@ message = message ..k.. '-l ['..info.username..'](tg://user?id='..v..') l » (`'
 end
 end 
 if utf8.len(message) > 4096 then
-return "📛| لا يمكن عرض المحظورين بسبب القائمه كبيره جدا ."
+return "⚠️| لا يمكن عرض المحظورين بسبب القائمه كبيره جدا ."
 else
 return send_msg(msg.chat_id_,message,msg.id_)
 end
@@ -1288,7 +1285,7 @@ for k,v in pairs(list) do
 filterlist = filterlist..'*'..k..'* -  '..Flter_Markdown(v)..'\n'
 end
 if utf8.len(filterlist) > 4096 then
-return "📛| لا يمكن عرض الممنوعين بسبب القائمه كبيره جدا ."
+return "⚠️| لا يمكن عرض الممنوعين بسبب القائمه كبيره جدا ."
 else
 return filterlist
 end
@@ -1554,7 +1551,7 @@ if GroupUsers  >= Groupcount and not arg.SudoBase then
 return sendMsg(arg.chat_id_,arg.id_,'🚸*¦* لآ يمـگنني تفعيل آلبوت في آلمـجمـوعهہ‏ يجب آن يگون آگثر مـن *【'..GroupUsers..'】* عضـو 👤')
 end
 if data.channel_ and data.channel_.status_.ID  == "ChatMemberStatusMember" then
-return sendMsg(arg.chat_id_,arg.id_,'📛*¦* عذرا البوت ليس ادمن  في المجموعه ♨️\n🔙*¦* يرجى ترقيته ادمن لتتمكن من تفعيل البوت ✓️')
+return sendMsg(arg.chat_id_,arg.id_,'⚠️*¦* عذرا البوت ليس ادمن  في المجموعه ♨️\n🔙*¦* يرجى ترقيته ادمن لتتمكن من تفعيل البوت ✓️')
 end
 
 if arg.lock_servicez then 
@@ -1656,7 +1653,7 @@ local ChatID = arg.msg.chat_id_
 local MsgID = arg.msg.id_
 local msg = arg.msg or ""
 if not data.id_ then 
-sendMsg(ChatID,MsgID,"📛*¦* العضو لا يوجد\n❕") 
+sendMsg(ChatID,MsgID,"⚠️*¦* العضو لا يوجد\n❕") 
 return false
 end
 local UserID = data.id_
@@ -1853,9 +1850,9 @@ return sendMsg(arg.ChatID,arg.MsgID,"👤*¦* لا يمكنك طرد الممي�
 end
 kick_user(UserID, ChatID,function(arg,data)
 if data.ID == "Error" and data.code_ == 400 then
-return sendMsg(ChatID,MsgID,'📛*¦* لا يمكنني طرد العضو .\n🎟*¦* لانه مشرف في المجموعه \n ❕')    
+return sendMsg(ChatID,MsgID,'⚠️*¦* لا يمكنني طرد العضو .\n🎟*¦* لانه مشرف في المجموعه \n ❕')    
 elseif data.ID == "Error" and data.code_ == 3 then
-return sendMsg(ChatID,MsgID,'📛*¦* لا يمكنني طرد العضو .\n🎟*¦* ليس لدي صلاحيه الحظر او لست مشرف\n ❕')    
+return sendMsg(ChatID,MsgID,'⚠️*¦* لا يمكنني طرد العضو .\n🎟*¦* ليس لدي صلاحيه الحظر او لست مشرف\n ❕')    
 end
 StatusLeft(ChatID,UserID)
 return send_msg(ChatID,'👤*¦* العضو » ['..NameUser..'](tg://user?id='..UserID..') \n🎫¦ الايدي » {`'..UserID..'`}\n🛠¦ تم طرده من المجموعة\n✓',UserID) 
@@ -1916,13 +1913,13 @@ if cmd == "upMshrf" then
   redis:hset(basmah..'username:'..UserID,'username',Resolv)
   redis:setex(basmah..":uploadingsomeon:"..ChatID..msg.sender_user_id_,500,NameUser)
   redis:setex(basmah..":uploadingsomeon2:"..ChatID..msg.sender_user_id_,500,UserID)
-  sendMsg(ChatID,MsgID,"📇|  » حسننا الان ارسل صلاحيات المشرف :\n\n|1- صلاحيه تغيير المعلومات\n|2- صلاحيه حذف الرسائل\n|3- صلاحيه دعوه مستخدمين\n|4- صلاحيه حظر وتقيد المستخدمين \n|5- صلاحيه تثبيت الرسائل \n|6- صلاحيه رفع مشرفين اخرين\n\n|[*]- لرفع كل الصلاحيات ما عدا رفع المشرفين \n|[**] - لرفع كل الصلاحيات مع رفع المشرفين \n\n🚸| يمكنك اختيار الارقام معا وتعيين الكنيه للمشرف في ان واحد مثلا : \n\n| 136 بصمة\n📬") 
+  sendMsg(ChatID,MsgID,"📇|  » حسنًا الان ارسل صلاحيات المشرف :\n\n|1- صلاحيه تغيير المعلومات\n|2- صلاحيه حذف الرسائل\n|3- صلاحيه دعوه مستخدمين\n|4- صلاحيه حظر وتقيد المستخدمين \n|5- صلاحيه تثبيت الرسائل \n|6- صلاحيه رفع مشرفين اخرين\n\n|[*]- لرفع كل الصلاحيات ما عدا رفع المشرفين \n|[**] - لرفع كل الصلاحيات مع رفع المشرفين \n\n🚸| يمكنك اختيار الارقام معا وتعيين الكنيه للمشرف في ان واحد مثلا : \n\n| 136 بصمة\n📬") 
   return false
 end
 
 if cmd == "DwonMshrf" then
   ResAdmin = UploadAdmin(ChatID,UserID,"")  
-  if ResAdmin == '{"ok":false,"error_code":400,"description":"Bad Request: CHAT_ADMIN_REQUIRED"}' then return sendMsg(ChatID,MsgID,"👤*¦*لا يمكنني تنزيله لانه مرفوع من قبل منشئ اخر \n📛")  end
+  if ResAdmin == '{"ok":false,"error_code":400,"description":"Bad Request: CHAT_ADMIN_REQUIRED"}' then return sendMsg(ChatID,MsgID,"👤*¦*لا يمكنني تنزيله لانه مرفوع من قبل منشئ اخر \n⚠️")  end
   redis:srem(basmah..':MONSHA_BOT:'..ChatID,UserID)
 redis:srem(basmah..'owners:'..ChatID,UserID)
 redis:srem(basmah..'admins:'..ChatID,UserID)
@@ -1940,21 +1937,21 @@ elseif redis:sismember(basmah..':SUDO_BOT:',UserID) then
 return sendMsg(ChatID,MsgID,"👤*¦* لا يمكنك حظر المطور\n🛠") 
 end
 if GeneralBanned(UserID) then 
-    return send_msg(ChatID,'👤*¦* العضو » ['..NameUser..'](tg://user?id='..UserID..') \n🎫¦ الايدي » {`'..UserID..'`}\n🛠¦ تم بالتأكيد حظرة عام من المجموعة\n✓',UserID) 
+    return send_msg(ChatID,'👤*¦* العضو » ['..NameUser..'](tg://user?id='..UserID..') \n🎫¦ الايدي » {`'..UserID..'`}\n🛠¦ تم بالتأكيد حظره عام من مجموعات بصمة\n✓',UserID) 
 end
 redis:hset(basmah..'username:'..UserID, 'username', Resolv)
 redis:sadd(basmah..'gban_users',UserID)
 kick_user(UserID,ChatID) 
-return send_msg(ChatID,'👤*¦* العضو » ['..NameUser..'](tg://user?id='..UserID..') \n🎫¦ الايدي » {`'..UserID..'`}\n🛠¦ تم حظرة عام من المجموعة\n✓',UserID) 
+return send_msg(ChatID,'👤*¦* العضو » ['..NameUser..'](tg://user?id='..UserID..') \n🎫¦ الايدي » {`'..UserID..'`}\n🛠¦ تم حظره عام من مجموعات بصمة\n✓',UserID) 
 end
 
 if cmd == "unbandall" then  
 if not GeneralBanned(UserID) then
-return send_msg(ChatID,'👤*¦* العضو » ['..NameUser..'](tg://user?id='..UserID..') \n🎫¦ الايدي » {`'..UserID..'`}\n🛠¦ تم بالتأكيد الغاء حظرة عام من المجموعة\n✓',UserID) 
+return send_msg(ChatID,'👤*¦* العضو » ['..NameUser..'](tg://user?id='..UserID..') \n🎫¦ الايدي » {`'..UserID..'`}\n🛠¦ تم بالتأكيد الغاء حظره عام من مجموعات بصمة\n✓',UserID) 
 end
 redis:srem(basmah..'gban_users',UserID)
 StatusLeft(ChatID,UserID)
-return send_msg(ChatID,'👤*¦* العضو » ['..NameUser..'](tg://user?id='..UserID..') \n🎫¦ الايدي » {`'..UserID..'`}\n🛠¦ تم الغاء حظرة عام من المجموعة\n✓',UserID) 
+return send_msg(ChatID,'👤*¦* العضو » ['..NameUser..'](tg://user?id='..UserID..') \n🎫¦ الايدي » {`'..UserID..'`}\n🛠¦ تم الغاء حظره عام من مجموعات بصمة\n✓',UserID) 
 end
 
 if cmd == "tfa3l" then  
@@ -1977,7 +1974,7 @@ end
 --========================================================================
 if cmd == "DwnAll" then ----------- تنزيل الكل
   print(UserID..":"..SUDO_ID)
-  if UserID == our_id then return sendMsg(ChatID,MsgID,"📛*¦* لآ يمكنك تنفيذ الامر مع البوت\n❕") end
+  if UserID == our_id then return sendMsg(ChatID,MsgID,"⚠️*¦* لا يمكنك تنفيذ الامر مع البوت\n❕") end
 
   if UserID == SUDO_ID then 
   rinkuser = 1
@@ -1996,7 +1993,7 @@ if cmd == "DwnAll" then ----------- تنزيل الكل
   else
   rinkuser = 8
   end
-  local DonisDown = "\n📛*¦* تم تنزيله من الرتب الاتيه : \n\n "
+  local DonisDown = "\n⚠️*¦* تم تنزيله من الرتب الاتيه : \n\n "
   if redis:sismember(basmah..':SUDO_BOT:',UserID) then 
    DonisDown = DonisDown.."⭕️*¦* تم تنزيله من المطور ✓️\n"
   end 
@@ -2016,8 +2013,8 @@ if cmd == "DwnAll" then ----------- تنزيل الكل
    DonisDown = DonisDown.."⭕️*¦* تم تنزيله من العضو مميز ✓️\n"
  end
 
-function senddwon()  sendMsg(ChatID,MsgID,"📛*¦* عذرا المستخدم رتبته اعلى منك لا يمكن تنزيله \n❕") end
-function sendpluse() sendMsg(ChatID,MsgID,"📛*¦* عذرا لا يمكن تنزيل رتبه مثل رتبتك : "..msg.TheRankCmd.." \n❕") end
+function senddwon()  sendMsg(ChatID,MsgID,"⚠️*¦* عذرا المستخدم رتبته اعلى منك لا يمكن تنزيله \n❕") end
+function sendpluse() sendMsg(ChatID,MsgID,"⚠️*¦* عذرا لا يمكن تنزيل رتبه مثل رتبتك : "..msg.TheRankCmd.." \n❕") end
 
 if rinkuser == 8 then return send_msg(ChatID,"👲🏼*¦* العضو » ["..NameUser.."](tg://user?id="..UserID..") \n🎫*¦* الايدي » {`"..UserID.."`}\n🛠*¦* انه اساسا عضو \n✓️",MsgID)  end
 huk = false
@@ -2100,7 +2097,7 @@ list_settings = "*👮🏾¦*` اعدادات المجموعه :` \n"
 .."\n🔅¦ الاشعارات » "..(redis:get(basmah..'mute_tgservice'..msg.chat_id_) or 'false')
 .."\n🔒¦ الفشار » "..(redis:get(basmah..'lock_mmno3'..msg.chat_id_) or 'false')
 .."\n🔒¦ الفارسيه » "..(redis:get(basmah..'lock_pharsi'..msg.chat_id_) or 'false')
-.."\n🔒¦ الانكليزيه » "..(redis:get(basmah..'lock_lang'..msg.chat_id_) or 'false')
+.."\n🔒¦ الانجليزية » "..(redis:get(basmah..'lock_lang'..msg.chat_id_) or 'false')
 .."\n🔒¦ الاضافه » "..(redis:get(basmah..'lock_Add'..msg.chat_id_) or 'false')
 
 local eueuf = "\n\n*⚒¦*` اعدادات اخرى : `"
