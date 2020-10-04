@@ -5,7 +5,6 @@
 #──▀████████▀──
 #─────▀██▀─────
 #l┊عُمر ‿ @i3mrz
-#l┊سعيد السوري ‿ @SA3ED
 #---------------------------------------------------------------------
 ]]
 
@@ -56,19 +55,19 @@ function lock_check(msg)
 function unlock_takkl(msg)
 if not msg.Creator then return "📛¦ هذا الامر يخص {المطور,المنشئ} فقط  \n🚶" end
 if redis:get(basmah.."lock_takkl"..msg.chat_id_) then 
-return SendMention(msg.chat_id_,msg.sender_user_id_,msg.id_,"🙋🏼‍♂️¦ أهلا عزيزي "..msg.TheRankCmd.."\n📡¦ امر تاك للكل مفعل مسبقاً \n✓" ,20,utf8.len(msg.TheRankCmd)) 
+return SendMention(msg.chat_id_,msg.sender_user_id_,msg.id_,"🙋🏼‍♂️¦ أهلا عزيزي "..msg.TheRankCmd.."\n📡¦ امر نداء للكل مفعل مسبقاً \n✓" ,20,utf8.len(msg.TheRankCmd)) 
 else redis:set(basmah.."lock_takkl"..msg.chat_id_,true)
-return SendMention(msg.chat_id_,msg.sender_user_id_,msg.id_,"🙋🏼‍♂️¦ أهلا عزيزي "..msg.TheRankCmd.."\n📡¦ تم تفعيل امر تاك للكل \n✓" ,20,utf8.len(msg.TheRankCmd)) 
+return SendMention(msg.chat_id_,msg.sender_user_id_,msg.id_,"🙋🏼‍♂️¦ أهلا عزيزي "..msg.TheRankCmd.."\n📡¦ تم تفعيل امر نداء للكل \n✓" ,20,utf8.len(msg.TheRankCmd)) 
 end
 end
  
 function lock_takkl(msg)
     if not msg.Creator then return "📛¦ هذا الامر يخص {المطور,المنشئ} فقط  \n🚶" end
     if not redis:get(basmah.."lock_takkl"..msg.chat_id_) then 
-return SendMention(msg.chat_id_,msg.sender_user_id_,msg.id_,"🙋🏼‍♂️¦ أهلا عزيزي "..msg.TheRankCmd.."\n📡¦ امر تاك للكل بالتأكيد معطل\n✓" ,20,utf8.len(msg.TheRankCmd)) 
+return SendMention(msg.chat_id_,msg.sender_user_id_,msg.id_,"🙋🏼‍♂️¦ أهلا عزيزي "..msg.TheRankCmd.."\n📡¦ امر نداء للكل بالتأكيد معطل\n✓" ,20,utf8.len(msg.TheRankCmd)) 
 else
 redis:del(basmah.."lock_takkl"..msg.chat_id_) 
-return SendMention(msg.chat_id_,msg.sender_user_id_,msg.id_,"🙋🏼‍♂️¦ أهلا عزيزي "..msg.TheRankCmd.."\n📡¦ تم تعطيل امر تاك للكل \n✓" ,20,utf8.len(msg.TheRankCmd)) 
+return SendMention(msg.chat_id_,msg.sender_user_id_,msg.id_,"🙋🏼‍♂️¦ أهلا عزيزي "..msg.TheRankCmd.."\n📡¦ تم تعطيل امر نداء للكل \n✓" ,20,utf8.len(msg.TheRankCmd)) 
 end 
 end 
 
@@ -570,20 +569,20 @@ end
 function lock_lang(msg)
 if not msg.Admin then return "📡¦ هذا الامر يخص الادمنيه فقط  🚶" end
 if redis:get(basmah.."lock_lang"..msg.chat_id_) then
-return SendMention(msg.chat_id_,msg.sender_user_id_,msg.id_,"🙋🏼‍♂️¦ أهلا عزيزي "..msg.TheRankCmd.."\n📡¦ الانكليزيه بالتأكيد تم قفلها \n✓",20,utf8.len(msg.TheRankCmd)) 
+return SendMention(msg.chat_id_,msg.sender_user_id_,msg.id_,"🙋🏼‍♂️¦ أهلا عزيزي "..msg.TheRankCmd.."\n📡¦ الانجليزية بالتأكيد تم قفلها \n✓",20,utf8.len(msg.TheRankCmd)) 
 else
 redis:set(basmah.."lock_lang"..msg.chat_id_,true)
-return SendMention(msg.chat_id_,msg.sender_user_id_,msg.id_,"🙋🏼‍♂️¦ أهلا عزيزي "..msg.TheRankCmd.."\n📡¦ تم قفل الانكليزيه \n✓",20,utf8.len(msg.TheRankCmd)) 
+return SendMention(msg.chat_id_,msg.sender_user_id_,msg.id_,"🙋🏼‍♂️¦ أهلا عزيزي "..msg.TheRankCmd.."\n📡¦ تم قفل الانجليزية \n✓",20,utf8.len(msg.TheRankCmd)) 
 end
 end
 
 function unlock_lang(msg)
 if not msg.Admin then return "📡¦ هذا الامر يخص الادمنيه فقط  🚶" end
 if not redis:get(basmah.."lock_lang"..msg.chat_id_) then
-return SendMention(msg.chat_id_,msg.sender_user_id_,msg.id_,"🙋🏼‍♂️¦ أهلا عزيزي "..msg.TheRankCmd.."\n📡¦ الانكليزيه بالتأكيد تم فتحها \n✓",20,utf8.len(msg.TheRankCmd)) 
+return SendMention(msg.chat_id_,msg.sender_user_id_,msg.id_,"🙋🏼‍♂️¦ أهلا عزيزي "..msg.TheRankCmd.."\n📡¦ الانجليزية بالتأكيد تم فتحها \n✓",20,utf8.len(msg.TheRankCmd)) 
 else 
 redis:del(basmah.."lock_lang"..msg.chat_id_)
-return SendMention(msg.chat_id_,msg.sender_user_id_,msg.id_,"🙋🏼‍♂️¦ أهلا عزيزي "..msg.TheRankCmd.."\n📡¦ تم فتح الانكليزيه \n✓",20,utf8.len(msg.TheRankCmd)) 
+return SendMention(msg.chat_id_,msg.sender_user_id_,msg.id_,"🙋🏼‍♂️¦ أهلا عزيزي "..msg.TheRankCmd.."\n📡¦ تم فتح الانجليزية \n✓",20,utf8.len(msg.TheRankCmd)) 
 end
 end
 
@@ -633,10 +632,10 @@ end
 function lock_tag(msg) 
 if not msg.Admin then return "📡¦ هذا الامر يخص الادمنيه فقط  🚶" end
 if redis:get(basmah.."lock_tag"..msg.chat_id_) then
-return SendMention(msg.chat_id_,msg.sender_user_id_,msg.id_,"🙋🏼‍♂️¦ أهلا عزيزي "..msg.TheRankCmd.."\n📡¦ التاك (#) بالتأكيد تم قفله \n✓",20,utf8.len(msg.TheRankCmd)) 
+return SendMention(msg.chat_id_,msg.sender_user_id_,msg.id_,"🙋🏼‍♂️¦ أهلا عزيزي "..msg.TheRankCmd.."\n📡¦ النداء (#) بالتأكيد تم قفله \n✓",20,utf8.len(msg.TheRankCmd)) 
 else
 redis:set(basmah.."lock_tag"..msg.chat_id_,true)
-return SendMention(msg.chat_id_,msg.sender_user_id_,msg.id_,"🙋🏼‍♂️¦ أهلا عزيزي "..msg.TheRankCmd.."\n📡¦ تم قفل التاك (#) \n✓",20,utf8.len(msg.TheRankCmd)) 
+return SendMention(msg.chat_id_,msg.sender_user_id_,msg.id_,"🙋🏼‍♂️¦ أهلا عزيزي "..msg.TheRankCmd.."\n📡¦ تم قفل النداء (#) \n✓",20,utf8.len(msg.TheRankCmd)) 
 end
 end
 
@@ -644,10 +643,10 @@ function unlock_tag(msg)
 
 if not msg.Admin then return "📡¦ هذا الامر يخص الادمنيه فقط  🚶" end
 if not redis:get(basmah.."lock_tag"..msg.chat_id_) then
-return SendMention(msg.chat_id_,msg.sender_user_id_,msg.id_,"🙋🏼‍♂️¦ أهلا عزيزي "..msg.TheRankCmd.."\n📡¦ التاك(#) بالتأكيد تم فتحه \n✓",20,utf8.len(msg.TheRankCmd)) 
+return SendMention(msg.chat_id_,msg.sender_user_id_,msg.id_,"🙋🏼‍♂️¦ أهلا عزيزي "..msg.TheRankCmd.."\n📡¦ النداء(#) بالتأكيد تم فتحه \n✓",20,utf8.len(msg.TheRankCmd)) 
 else 
 redis:del(basmah.."lock_tag"..msg.chat_id_)
-return SendMention(msg.chat_id_,msg.sender_user_id_,msg.id_,"🙋🏼‍♂️¦ أهلا عزيزي "..msg.TheRankCmd.."\n📡¦ تم فتح التاك (#) \n✓",20,utf8.len(msg.TheRankCmd)) 
+return SendMention(msg.chat_id_,msg.sender_user_id_,msg.id_,"🙋🏼‍♂️¦ أهلا عزيزي "..msg.TheRankCmd.."\n📡¦ تم فتح النداء (#) \n✓",20,utf8.len(msg.TheRankCmd)) 
 end
 end
 ---------------Lock UserName-------------------
